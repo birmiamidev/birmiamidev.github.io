@@ -1,1 +1,302 @@
-"Hello World" 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brickell Investment Realty</title>
+    <meta name="description"
+        content="BIR Real Estate specializes in high-end apartment sales and rentals in Brickell, Miami.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+    <style>
+        /* Import Montserrat locally */
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('./assets/fonts/Montserrat-VF.woff2') format('woff2');
+            /* Supports weights from 100 to 900 */
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Define the font for your HTML elements */
+        html {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        @keyframes gradient {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient 20s ease-in-out infinite; /* Slower and more subtle */
+    }
+
+    </style>
+</head>
+
+<body class="overflow-x-hidden" x-data="{ lockScroll: false }" :class="{ 'overflow-hidden': lockScroll }">
+
+    <!-- Header with Navigation and Hero Section -->
+    <header x-data="{ mobileMenuOpen: false }" x-effect="lockScroll = mobileMenuOpen"
+        class="relative min-h-72 md:min-h-screen">
+        <!-- Background Video -->
+
+
+          
+        <div class="absolute inset-0 overflow-hidden bg-gradient-to-r from-blue-900 via-purple-800 to-blue-900 animate-gradient">
+
+            <div class="relative w-full h-full">
+                <div id="slide-2" class="absolute inset-0 w-full h-full transition-opacity duration-1000 opacity-50">
+                    <video id="video2" src="./assets/media/brickell_area2.mp4" autoplay muted loop
+                        class="w-full h-full object-cover"></video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="container mx-auto px-4 py-6 flex justify-between items-center relative z-20">
+            <!-- Logo -->
+
+            <a className="flex flex-row items-center px-2  border border-red-600" href="/" aria-label="Home">
+                BIR
+                <!-- <svg className="w-30 lg:w-34" viewBox="0 0 512 319" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#0284c7" transform="translate(-640.511 -1169.93) scale(2.45448)"
+                        d="M469.146 606.261H359.905V477.004l4.475 3.756v122.739h102.452l2.314 2.762Zm-4.629-5.524h-97.355V486.299l3.628 3.045v108.63h91.412l2.315 2.763Zm-4.63-5.525h-86.315V494.881l2.762 2.318v95.25h81.239l2.314 2.763Zm-182.063-2.763h62.889v-95.25l2.763-2.318v100.331h-68.944l3.292-2.763Zm-6.584 5.525h75.017v-108.63l3.628-3.045v114.438h-81.937l3.292-2.763Zm-6.585 5.525h88.012V480.76l4.475-3.756v129.257h-95.779l3.292-2.762Zm19.829-16.707v-70.005h34.787c9.387 0 16.996 8.038 16.996 17.951a18.72 18.72 0 0 1-1.499 7.381 17.908 17.908 0 0 1-4.222 6.041l-2.308 1.924-.004-.003-1.319 1.107-.801.668.002.002-41.632 34.934Zm97.409-.002v-70.003h34.788c9.387 0 16.996 8.038 16.996 17.951 0 2.631-.536 5.129-1.499 7.381a17.91 17.91 0 0 1-4.223 6.041l-3.34 2.785-.002-.001-.684.574-.383.32-41.653 34.952Zm43.428-32.834 27.624 32.968h-66.914l39.29-32.968Zm-97.049-.301 2.274 1.897a17.898 17.898 0 0 1 4.222 6.041 18.72 18.72 0 0 1 1.499 7.381c0 9.913-7.609 17.95-16.996 17.95h-30.647l39.648-33.269Z" />
+                </svg> -->
+                <!-- <small className="hidden ml-4 lg:block text-primary font-bold uppercase leading-3">Brickell <br />Investment <br />Realty </small> -->
+            </a>
+
+
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-10 text-white text-lg">
+
+                <a href="#" class="hover:text-yellow-300 transition font-medium">Gallery</a>
+                <a href="#" class="hover:text-yellow-300 transition font-medium">Floor Plans</a>
+                <a href="#about" class="hover:text-yellow-300 transition font-medium">About BIR</a>
+
+            </div>
+
+            <!-- Contact Button -->
+            <a href="#contact"
+                class="hidden md:block bg-yellow-500 hover:bg-yellow-600 text-blue-900 px-8 py-3 rounded-full transition font-medium text-lg">Contact
+                Us!</a>
+
+            <!-- Animated Mobile Menu Button (Stays in the same position) -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen"
+                class="md:hidden text-white z-40 p-2 fixed top-6 right-4 focus:outline-none" aria-label="Toggle menu">
+                <div class="w-8 h-8 relative flex justify-center items-center">
+                    <!-- Top line -->
+                    <span class="absolute h-1 w-8 bg-white rounded-full transform transition-all duration-300"
+                        :class="mobileMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'"></span>
+
+                    <!-- Middle line (disappears on open) -->
+                    <span class="absolute h-1 w-8 bg-white rounded-full transition-all duration-300"
+                        :class="mobileMenuOpen ? 'opacity-0' : 'opacity-100'"></span>
+
+                    <!-- Bottom line -->
+                    <span class="absolute h-1 w-8 bg-white rounded-full transform transition-all duration-300"
+                        :class="mobileMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'"></span>
+                </div>
+            </button>
+
+
+
+            <!-- Enhanced Mobile Menu with Submenus -->
+            <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-95"
+                class="md:hidden fixed inset-0 bg-blue-900 bg-opacity-95 flex flex-col items-center justify-center z-30">
+
+                <div
+                    class="flex flex-col space-y-2 text-white text-2xl text-center w-full px-6 max-h-screen overflow-y-auto py-12">
+                    <a href="#" @click="mobileMenuOpen = false"
+                        class="py-4 hover:text-yellow-300 transition border-b border-blue-800">Gallery</a>
+                    <a href="#" @click="mobileMenuOpen = false"
+                        class="py-4 hover:text-yellow-300 transition border-b border-blue-800">Floor Plans</a>
+                    <a href="#about" @click="mobileMenuOpen = false"
+                        class="py-4 hover:text-yellow-300 transition border-b border-blue-800">About BIR</a>
+
+                    <!-- Mobile CTA Btn -->
+                    <a href="#" @click="mobileMenuOpen = false"
+                        class="bg-yellow-500 text-blue-900 font-bold text-xl px-8 py-4 rounded-full transition mt-6 w-64 mx-auto">Contact
+                        Us!</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div
+            class="relative container mx-auto px-4 flex items-center justify-start h-full min-h-72 md:min-h-screen z-10">
+            <div class="max-w-2xl text-white mt-16 md:mt-0 md:pt-20 lg:pt-0">
+                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight mb-8 opacity-70">
+                    <!-- Embrace the Vibrant Brickell Neighborhood! -->
+                    Experience the Vibrant Charm <br />of the Brickell Neighborhood!
+                    <!-- Discover Brickell's Charm and Vibrancy! -->
+                </h1>
+                <p class="text-xl md:text-2xl mb-8">Nestled near the shimmering waters of Brickell Bay, our trusted
+                    firm, with 30 years of expertise, will guide you seamlessly to your dream home!</p>
+                <a href="#"
+                    class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold px-8 py-4 rounded-full transition text-lg">Your
+                    Dream Home Starts Here!</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About BIR Section -->
+    <section id="about" class="py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Text Content -->
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8" style="color: #3B82F6">We're Not Just About
+                        Properties. We're About People Stories!</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        For over 30 years, Brickell Investment Realty (BIR) has been a trusted name in the real estate
+                        industry, proudly serving the vibrant nearshore community of Brickell Bay. Our rich legacy of
+                        excellence is built on a foundation of professionalism, personalized service, and an unwavering
+                        commitment to our clients' needs. <br /><br />
+                        At BIR, we don't just find houses; we help you create the lifestyle you've always dreamed of.
+                        We specialize in matching future homeowners and residents with spaces that reflect their
+                        aspirations and fit their unique
+                        preferences.
+                        <br /><br />Trust us to help you unlock the door to your dream home, where every day
+                        begins with confidence and ends with comfort.
+                    </p>
+                    <br />
+
+                    <a href="#"
+                        class="inline-block border-2 border-gray-800 text-gray-800 hover:bg-blue-800 hover:text-white px-8 py-3 rounded-full transition duration-300">
+                        See the Surroundings!
+                    </a>
+                </div>
+
+                <!-- Image and Decorative Elements -->
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="relative z-10">
+                        <img src="img.png" alt="Brickell Investment Realty Image" class="w-full rounded-lg shadow-xl">
+                    </div>
+
+                    <!-- Decorative Elements -->
+                    <!-- <div class="absolute -right-4 -bottom-8 -z-10">
+                        <div class="grid grid-cols-6 gap-2">
+                            <div class="h-16 w-3 bg-blue-300 rounded-full"></div>
+                            <div class="h-8 w-3 bg-green-500 rounded-full"></div>
+                            <div class="h-12 w-3 bg-red-500 rounded-full"></div>
+                            <div class="h-16 w-3 bg-yellow-500 rounded-full"></div>
+                            <div class="h-10 w-3 bg-blue-500 rounded-full"></div>
+                            <div class="h-6 w-3 bg-yellow-600 rounded-full"></div>
+
+                            <div class="h-8 w-3 bg-blue-300 rounded-full"></div>
+                            <div class="h-16 w-3 bg-green-500 rounded-full"></div>
+                            <div class="h-10 w-3 bg-red-500 rounded-full"></div>
+                            <div class="h-6 w-3 bg-yellow-500 rounded-full"></div>
+                            <div class="h-12 w-3 bg-blue-500 rounded-full"></div>
+                            <div class="h-8 w-3 bg-yellow-600 rounded-full"></div>
+
+                            <div class="h-10 w-3 bg-blue-300 rounded-full"></div>
+                            <div class="h-6 w-3 bg-green-500 rounded-full"></div>
+                            <div class="h-12 w-3 bg-red-500 rounded-full"></div>
+                            <div class="h-8 w-3 bg-yellow-500 rounded-full"></div>
+                            <div class="h-16 w-3 bg-blue-500 rounded-full"></div>
+                            <div class="h-10 w-3 bg-yellow-600 rounded-full"></div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-900 text-white relative overflow-hidden">
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to take the next step toward your dream home?</h2>
+                <p class="text-xl mb-8"> We're here to help! Whether you have questions, need expert advice, or want to
+                    book a property tour, our team at Brickell Investment Realty is just a click away. Your journey to
+                    finding the perfect place to call home starts here. <strong>Let's make it happen!</strong>
+                </p>
+                <a href="#"
+                    class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold text-xl px-10 py-4 rounded-full transition">
+                    Contact Us!
+                </a>
+                <!-- <p class="mt-6 text-blue-200">No booking fees • Free cancellation • Best price guarantee</p> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Form Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+
+
+                <!-- Divider -->
+                <div class="border-t border-gray-800 pt-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <!-- Copyright -->
+                        <div class="text-gray-500 text-sm mb-4 md:mb-0">
+                            &copy; 2025 Brickell Investment Realty. All rights reserved.
+                        </div>
+
+                        <!-- Legal Links -->
+                        <!-- <div class="flex flex-wrap justify-center md:justify-end space-x-4 text-sm">
+                            <a href="#" class="text-gray-500 hover:text-yellow-300 mb-2 md:mb-0">Privacy Policy</a>
+                            <a href="#" class="text-gray-500 hover:text-yellow-300 mb-2 md:mb-0">Terms of Service</a>
+                            <a href="#" class="text-gray-500 hover:text-yellow-300 mb-2 md:mb-0">Cookie Policy</a>
+                            <a href="#" class="text-gray-500 hover:text-yellow-300">Sitemap</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            </footer>
+
+            <!-- Accessibility Button -->
+            <!-- <button class="fixed bottom-4 left-4 bg-gray-900 text-white p-3 rounded-full z-50"
+                aria-label="Accessibility Options">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                </svg>
+            </button> -->
+
+            <!-- Floating Button to Go Up -->
+            <button id="scrollToTop"
+                class="fixed bottom-5 right-5 bg-blue-600 text-white p-3 rounded-full shadow-lg hidden">
+                ↑
+            </button>
+
+            <script>
+                // JavaScript for showing/hiding the scroll-to-top button
+                const scrollToTopBtn = document.getElementById('scrollToTop');
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 200) {
+                        scrollToTopBtn.classList.remove('hidden');
+                    } else {
+                        scrollToTopBtn.classList.add('hidden');
+                    }
+                });
+
+                // Smooth scroll to top
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            </script>
+
+
+</body>
+
+</html>
